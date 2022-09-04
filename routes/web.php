@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Http;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', function ($request) {
+
 });
 
 Route::get('judge_info', function () {
@@ -24,6 +24,26 @@ Route::get('judge_info', function () {
 });
 
 Route::get('languages', function () {
-    $response = Http::get('http://bd63-118-179-107-241.ngrok.io/languages',['verify' => false]);
+    $response = Http::get('https://5c1e-118-179-107-241.ngrok.io/languages');
     return $response->json();
+});
+
+Route::get('submission', function () {
+
+            $response = Http::post('http://localhost:2357/submissions?base64_encoded=true&fields=*', [
+                "language_id"=> 52,
+            "source_code"=>"I2luY2x1ZGUgPHN0ZGlvLmg+CgppbnQgbWFpbih2b2lkKSB7CiAgY2hhciBuYW1lWzEwXTsKICBzY2FuZigiJXMiLCBuYW1lKTsKICBwcmludGYoImhlbGxvLCAlc1xuIiwgbmFtZSk7CiAgcmV0dXJuIDA7Cn0=",
+            "stdin"=> "SnVkZ2Uw",
+            "cpu_time_limit"=>"1.0"
+            ]);
+
+        echo $response->body();
+});
+
+Route::get('submissions/{token}', function ($token) {
+
+    $url = "http://localhost:2357/submissions/".$token."?base64_encoded=false&fields=*";
+    $response = Http::get($url);
+
+echo $response;
 });
