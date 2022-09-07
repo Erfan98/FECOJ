@@ -10,7 +10,48 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
   <body>
-        
+    <div class="container-fluid text-center">
+        <div class="row">
+          <div class="col">
+            <p>
+                Read 2 variables, named A and B and make the sum of these two variables, assigning its result to the variable X. Print X as shown below. Print endline after the result otherwise you will get “Presentation Error”.
+
+Input
+The input file will contain 2 integer numbers.
+
+Output
+Print the letter X (uppercase) with a blank space before and after the equal signal followed by the value of X, according to the following example.
+
+Obs.: don't forget the endline after all.
+
+Samples Input	Samples Output
+10
+9
+
+X = 19
+
+-10
+4
+
+X = -6
+
+15
+-7
+
+X = 8
+
+
+            </p>
+          </div>
+          <div class="col">
+            <form action="/submit" method="post">
+                @csrf
+                <textarea name="code" id="" cols="100" rows="30"></textarea><br>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

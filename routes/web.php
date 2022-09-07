@@ -14,8 +14,29 @@ use Illuminate\Support\Facades\Http;
 |
 */
 
-Route::get('/', function ($request) {
+Route::get('/', function () {
+    return view('home');
+});
 
+Route::post('/submit',function(){
+    $code = base64_encode(request()->code);
+    $input = base64_encode(1000004123);
+    //dd($code);
+    $url ="http://localhost:2357/submissions?base64_encoded=true&fields=*";
+    $response = Http::post($url, [
+        "language_id"=> 52,
+    "source_code"=> $code,
+    "stdin"=> $input,
+    "cpu_time_limit"=>"4.0"
+    ]);
+
+     $token = $response['token'];
+
+     $url = "http://localhost:2357/submissions/".$token."?base64_encoded=true&fields=*";
+     sleep(7);
+     $response = Http::get($url);
+
+    return $response;
 });
 
 Route::get('judge_info', function () {
