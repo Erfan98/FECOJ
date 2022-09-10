@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\SubmitController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,8 +26,10 @@ Route::get('/problemset',function(){
     return view('problemset');
 });
 
-Route::post('/submit',function(){
-    return dd(request());
+Route::get('/submissions',function(){
+    return view('submissions');
 });
+
+Route::post('/submit/',[SubmitController::class,'submit']);
 
 

@@ -12,7 +12,20 @@
         For example, if Dima and one of his friends played hide and seek, and 7 fingers were shown during the counting-out, then Dima would clean the place. If there were 2 or say, 8 fingers shown, then his friend would clean the place.
 
         Dima knows how many fingers each of his friends will show during the counting-out. Now he is interested in the number of ways to show some number of fingers on one hand (one to five), so that he did not have to clean the place. Help Dima.
+        <h2>Input</h2>
+        <code>
+            <h4>0 1</h4>
+        </code>
+        <hr>
+        <h2>Output</h2>
+        <code>
+            <h4>0 1</h4>
+        </code>
     </div>
+
+
+
+
   </div>
 @endsection
 
@@ -21,7 +34,7 @@
     <div class="card-body">
         <h3>Submit a solution</h3>
 
-        <form action="/submit" method="post">
+        <form action="/submit" method="post" enctype="multipart/form-data">
             @csrf
             <label for="user_id">User:</label>
             <input name="user_id" class="form-control" type="text" value="{{Auth::user()->id??0}}" aria-label="Disabled input example" hidden>

@@ -35,10 +35,10 @@
                 @guest
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                      <a class="nav-link active" aria-current="page" href="#">Login</a>
+                      <a class="nav-link active" aria-current="page" href="/login">Login</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#">Register</a>
+                      <a class="nav-link" href="/register">Register</a>
                     </li>
                   </ul>
                 @endguest
@@ -60,10 +60,22 @@
 
       <div class="container">
         <div class="row">
-          <div class="col-8">
-            @yield("body")
+          <div class="col-9">
+
+            <div class="card">
+
+                <div class="card-body">
+                    @yield("body")
+                </div>
+
+
+
+
+              </div>
+
+
           </div>
-          <div class="col-4">
+          <div class="col-3">
             @yield("sidebar")
           </div>
         </div>
