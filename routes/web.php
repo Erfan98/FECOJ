@@ -15,7 +15,7 @@ use App\Models\Submissions;
 */
 
 Route::get('/', function () {
-    return view('dashboard');
+    return view('home');
 });
 
 Route::get('/dashboard', function () {
