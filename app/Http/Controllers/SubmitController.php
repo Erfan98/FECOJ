@@ -25,13 +25,20 @@ class SubmitController extends Controller
         $submission->who = request()->user_id;
         $submission->problem = request()->problem_id;
         $submission->lang = request()->language;
-        $submission->source_code = request()->file('source_code')->get();
+        $submission->source_code = base64_encode(request()->file('source_code')->get());
 
-        $token = IsolateSubmit($submission->lang,$submission->source_code);
-        sleep(1);
-        $status = getStatus($token);
+        $token = IsolateSubmit($submission->lang,base64_decode($submission->source_code));
+        sleep(3);
         //dd($token);
+        $status = getStatus($token);
 
-        dd($status);
+        $submission->verdict = $status['status']['description'];
+        $submission->time =$status['time']?? "0.0";
+        $submission->memory =$status['memory']?? "0";
+
+        $submission->save();
+
+        // dd($status);
+        return view('submissions',['submissions'=>Submissions::all()]);
     }
 }

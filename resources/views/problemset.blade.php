@@ -1,7 +1,7 @@
 @extends('layouts/master')
 
 @section('body')
-<div class="card">
+
 
     <div class="card-body">
         <h2 class="card-title">Card title</h2>
@@ -21,16 +21,12 @@
         <code>
             <h4>0 1</h4>
         </code>
-    </div>
-
-
-
-
   </div>
 @endsection
 
 @section('sidebar')
 <div class="card">
+    {{-- @dd(langauges()) --}}
     <div class="card-body">
         <h3>Submit a solution</h3>
 

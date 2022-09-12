@@ -15,8 +15,7 @@ return new class extends Migration
     {
         Schema::create('submissions', function (Blueprint $table) {
             $table->id();
-            $table->string('source_code')->unique();
-            $table->timestamp('when');
+            $table->longText('source_code');
             $table->string('who');
             $table->string('problem');
             $table->string('lang');

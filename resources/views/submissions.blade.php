@@ -1,6 +1,7 @@
 @extends('layouts/master')
 
 @section('body')
+{{-- @dd($submissions); --}}
 <table class="table">
     <thead class="thead-dark">
       <tr>
@@ -15,7 +16,19 @@
       </tr>
     </thead>
     <tbody>
+      @foreach ($submissions as $submission)
       <tr>
+        <th scope="row">{{$submission->id}}</th>
+        <td>{{$submission->created_at->diffForHumans()}}</td>
+        <td>{{$submission->who}}</td>
+        <td>{{$submission->problem}}</td>
+        <td>{{$submission->lang}}</td>
+        <td>{{$submission->verdict}}</td>
+        <td>{{$submission->time}}</td>
+        <td>{{$submission->memory}}</td>
+      </tr>
+      @endforeach
+      {{-- <tr>
         <th scope="row">1</th>
         <td>Sep/08/2022 21:15UTC+6</td>
         <td>Ovicorsho</td>
@@ -54,17 +67,7 @@
         <td>Python</td>
         <td>380 ms</td>
         <td>1 MB</td>
-      </tr>
-      <tr>
-        <th scope="row">1</th>
-        <td>Sep/08/2022 21:15UTC+6</td>
-        <td>Ovicorsho</td>
-        <td>Basic Problem</td>
-        <td>Basic Problem</td>
-        <td>Python</td>
-        <td>380 ms</td>
-        <td>1 MB</td>
-      </tr>
+      </tr> --}}
     </tbody>
   </table>
 

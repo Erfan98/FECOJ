@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SubmitController;
+use App\Models\Submissions;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,7 +28,8 @@ Route::get('/problemset',function(){
 });
 
 Route::get('/submissions',function(){
-    return view('submissions');
+    $submissions = Submissions::all();
+    return view('submissions',['submissions'=>$submissions]);
 });
 
 Route::post('/submit/',[SubmitController::class,'submit']);
