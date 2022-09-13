@@ -6,3 +6,9 @@ body{
     box-shadow: #e1e1e1 5px 5px 5px;
     border-radius: 10px;
 }
+.input-block,.output-block{
+    background: #e0e0e0;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px;
+}

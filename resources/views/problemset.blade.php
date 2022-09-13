@@ -13,14 +13,26 @@
 
         Dima knows how many fingers each of his friends will show during the counting-out. Now he is interested in the number of ways to show some number of fingers on one hand (one to five), so that he did not have to clean the place. Help Dima.
         <h2>Input</h2>
-        <code>
-            <h4>0 1</h4>
-        </code>
-        <hr>
+
+        <div class="input-block">
+            6
+            logic
+            codeforces
+            bca
+            aaaaaaaaaaa
+            adbaadabad
+            to
+        </div>
         <h2>Output</h2>
-        <code>
-            <h4>0 1</h4>
-        </code>
+        <div class="output-block">
+            6
+            logic
+            codeforces
+            bca
+            aaaaaaaaaaa
+            adbaadabad
+            to
+        </div>
   </div>
 @endsection
 
