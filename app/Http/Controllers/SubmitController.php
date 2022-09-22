@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Submissions;
-use Illuminate\Http\Request;
-use Symfony\Component\Console\Input\Input;
 
 class SubmitController extends Controller
 {

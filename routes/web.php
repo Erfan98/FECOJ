@@ -21,17 +21,14 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
-require __DIR__.'/auth.php';
 
-Route::get('/problemset',function(){
+Route::get('/problemset', function () {
     return view('problemset');
 });
 
-Route::get('/submissions',function(){
+Route::get('/submissions', function () {
     $submissions = Submissions::all();
-    return view('submissions',['submissions'=>$submissions]);
+    return view('submissions', ['submissions' => $submissions]);
 });
 
-Route::post('/submit/',[SubmitController::class,'submit']);
-
-
+Route::post('/submit/', [SubmitController::class, 'submit']);
