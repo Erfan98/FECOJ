@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('submissions', function (Blueprint $table) {
             $table->id();
+            $table->string('token');
             $table->longText('source_code');
             $table->string('who');
             $table->string('problem');

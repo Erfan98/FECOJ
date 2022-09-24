@@ -61,7 +61,7 @@
             </select>
 
             <label for="source_code" class="form-label">Select Source Code:</label>
-            <input  class="form-control" type="file" name="source_code" id="">
+            <input required class="form-control" type="file" name="source_code" id="">
             <br>
             @auth
                  <button type="submit" class="btn btn-primary">Submit Solution</button>

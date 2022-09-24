@@ -26,8 +26,9 @@ class SubmitController extends Controller
         $submission->source_code = base64_encode(request()->file('source_code')->get());
 
         $token = IsolateSubmit($submission->lang,base64_decode($submission->source_code));
-        sleep(3);
+        //sleep(3);
         //dd($token);
+        $submission->token = $token['token'];
         $status = getStatus($token);
 
         $submission->verdict = $status['status']['description'];
@@ -37,6 +38,6 @@ class SubmitController extends Controller
         $submission->save();
 
         // dd($status);
-        return view('submissions',['submissions'=>Submissions::all()]);
+        return redirect('/submissions');
     }
 }

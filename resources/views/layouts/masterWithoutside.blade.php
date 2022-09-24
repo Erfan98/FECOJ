@@ -85,24 +85,12 @@
     </nav>
 
     <div class="container">
-        @yield('full-body')
-        <div class="row">
-            <div class="col-9">
-
-                <div class="card">
-                    <div class="card-body">
-                        @yield('body')
-                    </div>
-                </div>
-
-            </div>
-            <div class="col-3">
-                @yield('sidebar')
+        <div class="card">
+            <div class="card-body">
+                @yield('body')
             </div>
         </div>
     </div>
-
-
     @yield('script')
 </body>
 

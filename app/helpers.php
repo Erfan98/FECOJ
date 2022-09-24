@@ -22,7 +22,6 @@ function IsolateSubmit($lang, $source_code)
 
 function getStatus($token)
 {
-    global $judge_api, $judge_host;
     $response = Http::withHeaders([
         'Accept' => '*/*',
         'User-Agent' => 'Thunder Client (https://www.thunderclient.com)',

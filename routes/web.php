@@ -31,4 +31,12 @@ Route::get('/submissions', function () {
     return view('submissions', ['submissions' => $submissions]);
 });
 
-Route::post('/submit/', [SubmitController::class, 'submit']);
+Route::post('/submit', [SubmitController::class, 'submit']);
+
+Route::get('/create_problem', function () {
+    return view('create-problem');
+});
+
+Route::get('/get_source/{id}',function($id){
+    return Submissions::with('user:name,id')->find($id);
+});
