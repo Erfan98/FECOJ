@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SubmitController;
+use App\Models\Languages;
 use App\Models\Submissions;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,7 +25,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::get('/problemset', function () {
-    return view('problemset');
+    return view('problemset',['langs'=>Languages::all()]);
 });
 
 Route::get('/submissions', function () {
@@ -39,4 +41,10 @@ Route::get('/create_problem', function () {
 
 Route::get('/get_source/{id}',function($id){
     return Submissions::with('user:name,id')->find($id);
+});
+
+Route::get('/langs',function(){
+    //return langauges();
+
+
 });

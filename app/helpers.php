@@ -33,17 +33,13 @@ function getStatus($token)
     return $response->json();
 }
 
-function langauges()
-{
-    $response = Http::withHeaders([
-        'Accept' => '*/*',
-        'User-Agent' => 'Thunder Client (https://www.thunderclient.com)',
-        'X-RapidAPI-Key' => env('X_RapidAPI_Key'),
-        'X-RapidAPI-Host' => 'judge0-ce.p.rapidapi.com'
-    ])->get(env('X_RapidAPI_Host') . '/languages');
-    return $response->json();
-}
-
-function idToLang($id)
-{
-}
+// function langauges()
+// {
+//     $response = Http::withHeaders([
+//         'Accept' => '*/*',
+//         'User-Agent' => 'Thunder Client (https://www.thunderclient.com)',
+//         'X-RapidAPI-Key' => env('X_RapidAPI_Key'),
+//         'X-RapidAPI-Host' => 'judge0-ce.p.rapidapi.com'
+//     ])->get(env('X_RapidAPI_Host') . '/languages');
+//     return $response->json();
+// }

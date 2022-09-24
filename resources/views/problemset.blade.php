@@ -55,8 +55,8 @@
 
             <label for="language">Choose a Language:</label>
             <select class="form-select" id="language" name="language">
-            @foreach (langauges() as $lang)
-            <option value={{$lang["id"]}}>{{$lang["name"]}}</option>
+            @foreach ($langs as $lang)
+            <option value={{$lang->id}}>{{$lang->lang}}</option>
             @endforeach
             </select>
 

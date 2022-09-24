@@ -13,4 +13,9 @@ class Submissions extends Model
     {
         return $this->belongsTo(User::class,'who');
     }
+
+    public function language()
+    {
+        return $this->belongsTo(Languages::class,'lang');
+    }
 }

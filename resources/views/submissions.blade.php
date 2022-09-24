@@ -67,10 +67,10 @@
                 @foreach ($submissions as $submission)
                     <tr>
                         <th><a href="#" class="show_code">{{ $submission->id }}</a></th>
-                        <td>{{ $submission->created_at->format('M-d-Y || H:i:s')}}<sup>GMT6+</sup></td>
+                        <td>{{Carbon\Carbon::parse($submission->created_at)->timezone('Asia/Dhaka')->format('M-d-Y || H:i:s')}}<sup>GMT6+</sup></td>
                         <td><a href="#">{{ $submission->user->name }}</a></td>
                         <td><a href="#">{{ $submission->problem }}</a></td>
-                        <td>{{ $submission->lang }}</td>
+                        <td>{{ $submission->language->lang }}</td>
                         <td style="color:{{ $submission->verdict == 'Accepted' ? 'green' : 'red' }};">{{ $submission->verdict }}</td>
                         <td>{{ (float)$submission->time*1000 }} ms</td>
                         <td>{{ $submission->memory }} KB</td>
@@ -85,7 +85,15 @@
 @section('script')
 <script src="js/jquery.copiq.min.js"></script>
 <script>
-    $('#myTable').DataTable();
+    $('#myTable').DataTable(
+        {order:[[0,"desc"]],
+        lengthMenu: [
+            [50, 100, 200, -1],
+            [50, 100, 200, 'All'],
+        ]
+    }
+
+        );
     $(".show_code").click(function() {
         var sc = jQuery(this).text();
         $.ajax({
