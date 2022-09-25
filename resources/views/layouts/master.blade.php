@@ -29,7 +29,8 @@
     <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
 
     <title>FEC Online Judge</title>
-    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="/css/app.css">
+
     @notifyCss
     @notifyJs
 </head>
@@ -48,7 +49,7 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/contests">Contests</a>
-                        <li><a class="nav-link" href="/create_problem">Create Problem</a></li>
+                    <li><a class="nav-link" href="/create_problem">Create Problem</a></li>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/problemset">Problemset</a>
@@ -96,16 +97,13 @@
     </nav>
 
     <div class="container">
-        @yield('full-body')
         <div class="row">
             <div class="col-9">
-
                 <div class="card">
                     <div class="card-body">
                         @yield('body')
                     </div>
                 </div>
-
             </div>
             <div class="col-3">
                 @yield('sidebar')
@@ -115,6 +113,7 @@
 
 
     @yield('script')
+
     <x:notify-messages />
 </body>
 

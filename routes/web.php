@@ -4,6 +4,7 @@ use App\Http\Controllers\ProblemSetController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SubmitController;
 use App\Models\Languages;
+use App\Models\ProblemSet;
 use App\Models\Submissions;
 
 /*
@@ -18,6 +19,7 @@ use App\Models\Submissions;
 */
 
 Route::get('/', function () {
+    notify()->error('Something Went Wrong');
     return view('home');
 });
 
@@ -25,8 +27,14 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::get('/problemset', function () {
-    return view('problemset',['langs'=>Languages::all()]);
+Route::get('/problemset/{id}', function ($id) {
+    $problem = ProblemSet::findOrFail($id);
+
+    if($problem){
+        return view('problemset',['langs'=>Languages::all(),'problem'=>$problem]);
+    }
+    abort(404);
+
 });
 
 Route::get('/submissions', function () {
@@ -46,8 +54,3 @@ Route::get('/get_source/{id}',function($id){
     return Submissions::with('user:name,id')->find($id);
 });
 
-Route::get('/langs',function(){
-    //return langauges();
-
-
-});

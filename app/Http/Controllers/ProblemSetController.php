@@ -21,8 +21,15 @@ class ProblemSetController extends Controller
         // ]);
 
         //dd(request()->except('_token'));
-        $problem =ProblemSet::create(request()->except('_token'));
-        notify()->success('Your Problem has created succesfully');
-        return view('home');
+        if(ProblemSet::create(request()->except('_token'))){
+            notify()->success('Your Problem has created succesfully');
+            return view('home');
+        }
+        else{
+            notify()->error('Something Went Wrong');
+            return redirect()->back();
+        }
+
+
     }
 }

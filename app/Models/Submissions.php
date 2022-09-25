@@ -18,4 +18,8 @@ class Submissions extends Model
     {
         return $this->belongsTo(Languages::class,'lang');
     }
+    public function prob()
+    {
+        return $this->belongsTo(ProblemSet::class,'problem');
+    }
 }

@@ -6,6 +6,10 @@ body{
     box-shadow: #e1e1e1 5px 5px 5px;
     border-radius: 10px;
 }
+.h2{
+    font-size: 30px;
+    font-style: bold;
+}
 .input-block,.output-block{
     background: #e0e0e0;
     padding: 20px;

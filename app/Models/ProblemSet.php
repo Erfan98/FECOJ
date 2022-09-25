@@ -19,4 +19,9 @@ class ProblemSet extends Model
                                 'mem_limit',
                                 'source_limit'
                             ];
+
+    public function submissions()
+        {
+            return $this->hasMany(Submissions::class);
+        }
 }

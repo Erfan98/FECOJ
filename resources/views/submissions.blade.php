@@ -1,20 +1,6 @@
 @extends('layouts.masterWithoutside')
 
 @section('body')
-{{-- <button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button>
-
-<div class="position-fixed top-0 end-0 p-3" tabindex="-2" style="z-index: 11">
-  <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
-    <div class="toast-header">
-        <strong class="me-auto">Bootstrap</strong>
-      <small>11 mins ago</small>
-      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-    </div>
-    <div class="toast-body">
-      Hello, world! This is a toast message.
-    </div>
-  </div>
-</div> --}}
     <div id="submissions">
         <div class="modal fade" id="submission_details" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
@@ -67,9 +53,9 @@
                 @foreach ($submissions as $submission)
                     <tr>
                         <th><a href="#" class="show_code">{{ $submission->id }}</a></th>
-                        <td>{{Carbon\Carbon::parse($submission->created_at)->timezone('Asia/Dhaka')->format('M-d-Y || H:i:s')}}<sup>GMT6+</sup></td>
+                        <td data-toggle="tooltip" title="{{Carbon\Carbon::parse($submission->created_at)->timezone('Asia/Dhaka')->format('M-d-Y || g:i A')}}">{{$submission->created_at->diffForHumans()}}</td>
                         <td><a href="#">{{ $submission->user->name }}</a></td>
-                        <td><a href="#">{{ $submission->problem }}</a></td>
+                        <td><a href="/problemset/{{$submission->problem}}">{{ $submission->prob->title??"NuLL" }}</a></td>
                         <td>{{ $submission->language->lang }}</td>
                         <td style="color:{{ $submission->verdict == 'Accepted' ? 'green' : 'red' }};">{{ $submission->verdict }}</td>
                         <td>{{ (float)$submission->time*1000 }} ms</td>
@@ -84,6 +70,7 @@
 
 @section('script')
 <script src="js/jquery.copiq.min.js"></script>
+<script src="js/notify.min.js"></script>
 <script>
     $('#myTable').DataTable(
         {order:[[0,"desc"]],
@@ -113,11 +100,13 @@
 
     $('#copy').copiq({
         content: "#code"
+    }).click(function (e) {
+        $.notify("Code Copied", "success");
     });
-    // $('#copy').click(function () {
-    //     $(".toast-body").text("Copied to clipboard")
-    //     $("#liveToast").toast("show");
-    // });
+
+    $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+});
 
 </script>
 @endsection
