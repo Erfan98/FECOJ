@@ -30,6 +30,8 @@
 
     <title>FEC Online Judge</title>
     <link rel="stylesheet" href="css/app.css">
+    @notifyCss
+    @notifyJs
 </head>
 
 <body>
@@ -46,6 +48,7 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/contests">Contests</a>
+                        <li><a class="nav-link" href="/create_problem">Create Problem</a></li>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/problemset">Problemset</a>
@@ -74,9 +77,17 @@
                                 {{ Auth::user()->name }}
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="/logout">Profile</a></li>
+                                <li><a class="dropdown-item" href="/submissions">Submissions</a></li>
+                                <hr>
+                                <li><a class="dropdown-item" href="/logout">Settings</a></li>
+                                <li><a class="dropdown-item" href="/logout">Create Problem</a></li>
+                                <li><a class="dropdown-item" href="/logout">Help</a></li>
+                                <hr>
                                 <li><a class="dropdown-item" href="/logout">Logout</a></li>
                             </ul>
                         </li>
+
                     @endauth
 
                 </ul>
@@ -104,6 +115,7 @@
 
 
     @yield('script')
+    <x:notify-messages />
 </body>
 
 </html>

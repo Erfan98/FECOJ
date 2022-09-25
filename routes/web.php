@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProblemSetController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SubmitController;
 use App\Models\Languages;
@@ -38,6 +39,8 @@ Route::post('/submit', [SubmitController::class, 'submit']);
 Route::get('/create_problem', function () {
     return view('create-problem');
 });
+
+Route::post('/create_problem',[ProblemSetController::class,'store']);
 
 Route::get('/get_source/{id}',function($id){
     return Submissions::with('user:name,id')->find($id);

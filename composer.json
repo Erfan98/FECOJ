@@ -12,6 +12,7 @@
         "laravel/sanctum": "^3.0",
         "laravel/telescope": "^4.9",
         "laravel/tinker": "^2.7",
+        "mckenziearts/laravel-notify": "^2.3",
         "twbs/bootstrap": "5.0.2"
     },
     "require-dev": {
