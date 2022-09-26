@@ -1,5 +1,7 @@
 body{
     background-color: rgb(233, 233, 233);
+    background-image: url('/img/old-mathematics.png');
+    background-repeat: repeat;
 }
 .card{
     margin-top: 20px;

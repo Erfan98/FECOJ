@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Http;
 
-function IsolateSubmit($lang, $source_code)
+function IsolateSubmit($standard_input,$expected_output,$language_id, $source_code,$cpu_time_limit=5.0,$memory_limit=128000)
 {
 
     $token = Http::withHeaders([
@@ -13,9 +13,13 @@ function IsolateSubmit($lang, $source_code)
         'X-RapidAPI-Host' => 'judge0-ce.p.rapidapi.com'
     ])
         ->post(env('X_RapidAPI_Host') . '/submissions?base64_encoded=true&fields=*', [
-            "language_id" => $lang,
+            "language_id" => $language_id,
             "source_code" => base64_encode($source_code),
-            // "stdin"=>"SnVkZ2Uw"
+            "stdin"=>base64_encode($standard_input),
+            "expected_output"=>base64_encode($expected_output),
+            "cpu_time_limit" => $cpu_time_limit,
+            "memory_limit" => $memory_limit,
+            "number_of_runs" => 2
         ]);
     return $token->json();
 }
