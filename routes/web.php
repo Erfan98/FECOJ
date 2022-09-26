@@ -19,7 +19,7 @@ use App\Models\Submissions;
 */
 
 Route::get('/', function () {
-    notify()->error('Something Went Wrong');
+    //notify()->error('Something Went Wrong');
     return view('home');
 });
 

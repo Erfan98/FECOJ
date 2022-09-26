@@ -26,7 +26,8 @@
 
 
     @yield('script')
-    @notifyJs
+
     <x:notify-messages />
+    @notifyJs
 </body>
 </html>

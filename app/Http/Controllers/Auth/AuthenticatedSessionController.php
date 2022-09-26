@@ -31,7 +31,7 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
-
+        notify()->success('Login Successfully!');
         return redirect()->intended('/');
     }
 
@@ -48,6 +48,8 @@ class AuthenticatedSessionController extends Controller
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
+
+        notify()->success("Logged Out!!");
 
         return redirect('/');
     }
