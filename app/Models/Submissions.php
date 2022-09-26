@@ -11,15 +11,15 @@ class Submissions extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class,'who');
+        return $this->belongsTo(User::class, 'who');
     }
 
     public function language()
     {
-        return $this->belongsTo(Languages::class,'lang');
+        return $this->belongsTo(Languages::class, 'lang');
     }
     public function prob()
     {
-        return $this->belongsTo(ProblemSet::class,'problem');
+        return $this->belongsTo(ProblemSet::class, 'problem');
     }
 }

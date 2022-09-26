@@ -53,60 +53,63 @@
                 @foreach ($submissions as $submission)
                     <tr>
                         <th><a href="#" class="show_code">{{ $submission->id }}</a></th>
-                        <td data-toggle="tooltip" title="{{Carbon\Carbon::parse($submission->created_at)->timezone('Asia/Dhaka')->format('M-d-Y || g:i A')}}">{{$submission->created_at->diffForHumans()}}</td>
+                        <td data-toggle="tooltip"
+                            title="{{ Carbon\Carbon::parse($submission->created_at)->timezone('Asia/Dhaka')->format('M-d-Y || g:i A') }}">
+                            {{ $submission->created_at->diffForHumans() }}</td>
                         <td><a href="#">{{ $submission->user->name }}</a></td>
-                        <td><a href="/problemset/{{$submission->problem}}">{{ $submission->prob->title??"NuLL" }}</a></td>
+                        <td><a href="/problemset/{{ $submission->problem }}">{{ $submission->prob->title ?? 'NuLL' }}</a></td>
                         <td>{{ $submission->language->lang }}</td>
-                        <td style="color:{{ $submission->verdict == 'Accepted' ? 'green' : 'red' }};">{{ $submission->verdict }}</td>
-                        <td>{{ (float)$submission->time*1000 }} ms</td>
+                        <td style="color:{{ $submission->verdict == 'Accepted' ? 'green' : 'red' }};">
+                            {{ $submission->verdict }}</td>
+                        <td>{{ (float) $submission->time * 1000 }} ms</td>
                         <td>{{ $submission->memory }} KB</td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
-
 @endsection
 
 @section('script')
-<script src="js/jquery.copiq.min.js"></script>
-<script src="js/notify.min.js"></script>
-<script>
-    $('#myTable').DataTable(
-        {order:[[0,"desc"]],
-        lengthMenu: [
-            [50, 100, 200, -1],
-            [50, 100, 200, 'All'],
-        ]
-    }
+    <script src="js/jquery.copiq.min.js"></script>
+    <script src="js/notify.min.js"></script>
+    <script>
+        $('#myTable').DataTable({
+                order: [
+                    [0, "desc"]
+                ],
+                lengthMenu: [
+                    [50, 100, 200, -1],
+                    [50, 100, 200, 'All'],
+                ]
+            }
 
         );
-    $(".show_code").click(function() {
-        var sc = jQuery(this).text();
-        $.ajax({
-            type: "GET",
-            url: "get_source/" + sc,
-            success: function(response) {
-                $('#handle').text(response.user.name);
-                $('#verdict').text(response.verdict).css("color", response.verdict == "Accepted" ?
-                    "green" : "red");
-                $("code").text(atob(response.source_code));
-                hljs.highlightAll();
-                hljs.initLineNumbersOnLoad();
-                $("#submission_details").modal("toggle");
-            }
+        $(".show_code").click(function() {
+            var sc = jQuery(this).text();
+            $.ajax({
+                type: "GET",
+                url: "get_source/" + sc,
+                success: function(response) {
+                    $('#handle').text(response.user.name);
+                    $('#verdict').text(response.verdict).css("color", response.verdict == "Accepted" ?
+                        "green" : "red");
+                    $("code").text(atob(response.source_code));
+                    hljs.highlightAll();
+                    hljs.initLineNumbersOnLoad();
+                    $("#submission_details").modal("toggle");
+                }
+            });
         });
-    });
 
-    $('#copy').copiq({
-        content: "#code"
-    }).click(function (e) {
-        $.notify("Code Copied", "success");
-    });
+        $('#copy').copiq({
+            content: "#code"
+        }).click(function(e) {
+            $.notify("Code Copied", "success");
+        });
 
-    $(function () {
-  $('[data-toggle="tooltip"]').tooltip()
-});
-
-</script>
+        $(function() {
+            $('[data-toggle="tooltip"]').tooltip()
+        });
+    </script>
 @endsection
