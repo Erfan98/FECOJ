@@ -55,5 +55,5 @@ Route::get('/get_source/{id}',function($id){
 });
 
 Route::get('/problemset',function(){
-    return view('ProblemSet',['problems'=>ProblemSet::all()]);
+    return view('problem-set',['problems'=>ProblemSet::all()]);
 });
