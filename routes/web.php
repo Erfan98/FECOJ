@@ -31,7 +31,7 @@ Route::get('/p/{id}', function ($id) {
     $problem = ProblemSet::findOrFail($id);
 
     if($problem){
-        return view('problem',['langs'=>Languages::all(),'problem'=>$problem]);
+        return view('single-problem',['langs'=>Languages::all(),'problem'=>$problem]);
     }
     abort(404);
 
