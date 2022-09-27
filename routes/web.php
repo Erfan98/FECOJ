@@ -1,11 +1,12 @@
 <?php
-
+namespace App\Models;
 use App\Http\Controllers\ProblemSetController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SubmitController;
 use App\Models\Languages;
 use App\Models\ProblemSet;
 use App\Models\Submissions;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -23,9 +24,9 @@ Route::get('/', function () {
     return view('home');
 });
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth'])->name('dashboard');
+Route::get('/u/{handle}', function ($handle) {
+    return view('user-profile',['handle'=>User::findOrFail($handle)]);
+});
 
 Route::get('/p/{id}', function ($id) {
     $problem = ProblemSet::findOrFail($id);

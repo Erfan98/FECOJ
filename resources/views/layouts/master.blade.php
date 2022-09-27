@@ -19,7 +19,17 @@
                 </div>
             </div>
             <div class="col-3">
-                @yield('sidebar')
+                <div class="card">
+                    <div class="card-body">
+                        @yield('sidebar')
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        @yield('sidebar-ext')
+                    </div>
+                </div>
             </div>
         </div>
     </div>

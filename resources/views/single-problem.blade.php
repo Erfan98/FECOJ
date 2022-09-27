@@ -18,9 +18,7 @@
 @endsection
 
 @section('sidebar')
-<div class="card">
-    {{-- @dd(langauges()) --}}
-    <div class="card-body">
+
         <h3>Submit a solution</h3>
 
         <form action="/submit" method="post" enctype="multipart/form-data">
@@ -54,11 +52,4 @@
             @endguest
 
         </form>
-
-
-
-
-
-    </div>
-  </div>
 @endsection
