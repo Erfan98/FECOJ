@@ -18,9 +18,17 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+            'name' ,
+            'email',
+            'handle',
+            'website',
+            'company',
+            'institution',
+            'grad_year',
+            'Location',
+            'last_seen',
+            'default_lang',
+            'password'
     ];
 
     /**
@@ -44,6 +52,6 @@ class User extends Authenticatable
 
     public function submissions()
     {
-        return $this->hasMany(Submissions::class);
+        return $this->hasMany(Submissions::class,'who');
     }
 }

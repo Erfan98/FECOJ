@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use App\Models\Languages;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,10 +19,19 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        \App\Models\User::create([
+            'name' => 'Erfan Ahmed Siam',
+            'email' => 'erfan.siam98@gmail.com',
+            'handle'=> 'Ovicorsho',
+            'website'=>'imerfan.com',
+            'company'=>'Magic Office LTD',
+            'institution'=>'Faridpur Engineering College',
+            'grad_year'=>'2024',
+            'Location'=>'Dhaka,Bangladesh',
+            'last_seen'=>'',
+            'default-lang'=>71,
+            'password'=> Hash::make('12345678')
+        ]);
 
         //Lanugage Database
         $lanugages = array (

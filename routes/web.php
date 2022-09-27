@@ -25,7 +25,31 @@ Route::get('/', function () {
 });
 
 Route::get('/u/{handle}', function ($handle) {
-    return view('user-profile',['handle'=>User::findOrFail($handle)]);
+
+    // Coupon::where('code', $code)
+    // ->withCount([
+    //     'orders as paid_orders_count' => function ($query) {
+    //         $query->where('status', 'paid');
+    //     },
+    // ])
+    // ->first();
+    $user = User::where('handle',$handle)
+                ->withCount([
+                    'submissions as submissions_ac'=>function($query){
+                    $query->where('verdict','Accepted');
+                },
+                'submissions as submissions_wa'=>function($query){
+                    $query->where('verdict','Wrong Answer');
+                },
+                'submissions as submissions_ce'=>function($query){
+                    $query->where('verdict','Compilation Error');
+                },
+                'submissions',
+
+
+                ])->firstOrFail();
+    //dd($user);
+    return view('user-profile',['handle'=>$user]);
 });
 
 Route::get('/p/{id}', function ($id) {

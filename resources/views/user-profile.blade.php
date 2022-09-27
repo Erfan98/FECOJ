@@ -6,7 +6,7 @@
     <div class="col text-end">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Contests</h4>
+                <h4 class="card-title">Contest Arranged</h4>
                 <p class="card-text"><h1>23</h1></p>
             </div>
         </div>
@@ -15,7 +15,7 @@
     <div class="col text-end">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Solved</h4>
+                <h4 class="card-title">Problem created</h4>
                 <p class="card-text"><h1>23</h1></p>
             </div>
         </div>
@@ -60,8 +60,8 @@
 
 <img src="https://placehold.jp/300x300.png" class="img-fluid rounded-top" alt="">
 <br>
-<h3 class="text-center">Erfan Ahmed Siam</h3>
-<h5 class="text-center">(Ovicorsho)</h5>
+<h3 class="text-center">{{$handle->name}}</h3>
+<h5 class="text-center">({{$handle->handle}})</h5>
     <br>
 <div class="row justify-content-center align-items-center g-2">
     <div class="col text-center">
@@ -70,12 +70,12 @@
     </div>
 
     <div class="col text-center">
-        <h5>55</h5>
+        <h5>{{$handle->submissions_ac}}</h5>
         <p>Solved</p>
     </div>
 
     <div class="col text-center">
-        <h5>55</h5>
+        <h5>{{$handle->submissions_count}}</h5>
         <p>Submissions</p>
     </div>
 </div>
@@ -83,13 +83,13 @@
 
 @section('sidebar-ext')
 <div class="ms-4">
-    <h6>Magic Office LTD</h6>
-    <h6><a href="#">Faridpur Engineering College</a></h6>
-    <h6><a href="#">erfan.siam98@gmail.com</a></h6>
-    <h6>Dhaka, Bangladesh</h6>
-    <h6>imerfan.com</h6>
+    <h6>{{$handle->complany}}</h6>
+    <h6><a href="#">{{$handle->insititute}}</a></h6>
+    <h6><a href="#">{{$handle->email}}</a></h6>
+    <h6>{{$handle->location}}</h6>
+    <h6>{{$handle->website}}</h6>
     <h6>Last Seen 5 minutes ago</h6>
-    <h6>Joined 18 April 2018</h6>
+    <h6>Joined on {{$handle->created_at->diffForHumans()}}</h6>
 </div>
 
 
@@ -103,7 +103,7 @@ const myChart = new Chart($('#verdicts'), {
         labels: ['AC', 'WA', 'TLE', 'MLE', 'RE', 'CE'],
         datasets: [{
             label: 'Verdicts',
-            data: [1, 2, 3, 3, 2, 3],
+            data: [{{$handle->submissions_ac}}, {{$handle->submissions_wa}}, 0,0,0,{{$handle->submissions_ce}}],
             backgroundColor: [
                 'rgba(75, 192, 192, 0.2)',
                 'rgba(255, 99, 132, 0.2)',

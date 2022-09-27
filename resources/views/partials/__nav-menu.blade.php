@@ -38,7 +38,7 @@
                             {{ Auth::user()->name }}
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="/logout">Profile</a></li>
+                            <li><a class="dropdown-item" href="/u/{{Auth::user()->handle}}">Profile</a></li>
                             <li><a class="dropdown-item" href="/submissions">Submissions</a></li>
                             <hr>
                             <li><a class="dropdown-item" href="/logout">Settings</a></li>

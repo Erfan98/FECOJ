@@ -16,6 +16,9 @@
             @csrf
 
             <!-- Email Address -->
+            Demo User
+            email : erfan.siam98@gmail.com <br>
+            Password : 12345678
             <div>
                 <x-input-label for="email" :value="__('Email')" />
 
