@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
             'company'=>'Magic Office LTD',
             'institution'=>'Faridpur Engineering College',
             'grad_year'=>'2024',
-            'Location'=>'Dhaka,Bangladesh',
+            'location'=>'Dhaka,Bangladesh',
             'last_seen'=>'',
             'default-lang'=>71,
             'password'=> Hash::make('12345678')
