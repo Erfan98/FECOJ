@@ -1,11 +1,13 @@
 <?php
 namespace App\Models;
 use App\Http\Controllers\ProblemSetController;
+use App\Http\Controllers\ProfileView;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SubmitController;
 use App\Models\Languages;
 use App\Models\ProblemSet;
 use App\Models\Submissions;
+use Illuminate\Support\Facades\DB;
 
 
 /*
@@ -21,36 +23,11 @@ use App\Models\Submissions;
 
 Route::get('/', function () {
     //notify()->error('Something Went Wrong');
+    //dd($items);
     return view('home');
 });
 
-Route::get('/u/{handle}', function ($handle) {
-
-    // Coupon::where('code', $code)
-    // ->withCount([
-    //     'orders as paid_orders_count' => function ($query) {
-    //         $query->where('status', 'paid');
-    //     },
-    // ])
-    // ->first();
-    $user = User::where('handle',$handle)
-                ->withCount([
-                    'submissions as submissions_ac'=>function($query){
-                    $query->where('verdict','Accepted');
-                },
-                'submissions as submissions_wa'=>function($query){
-                    $query->where('verdict','Wrong Answer');
-                },
-                'submissions as submissions_ce'=>function($query){
-                    $query->where('verdict','Compilation Error');
-                },
-                'submissions',
-
-
-                ])->firstOrFail();
-    //dd($user);
-    return view('user-profile',['handle'=>$user]);
-});
+Route::get('/u/{handle}',[ProfileView::class,'show']);
 
 Route::get('/p/{id}', function ($id) {
     $problem = ProblemSet::findOrFail($id);

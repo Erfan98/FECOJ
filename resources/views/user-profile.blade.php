@@ -70,7 +70,7 @@
     </div>
 
     <div class="col text-center">
-        <h5>{{$handle->submissions_ac}}</h5>
+        <h5>{{$solved}}</h5>
         <p>Solved</p>
     </div>
 
