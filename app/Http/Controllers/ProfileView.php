@@ -15,6 +15,8 @@ class ProfileView extends Controller
         $user_details = User::where('handle', $handle)->firstOrFail();
         $user_id = $user_details->id;
 
+        //dd($user_details);
+
         $solved = DB::table('submissions')
             ->select('problem')
             ->distinct()
@@ -35,8 +37,7 @@ class ProfileView extends Controller
         //     dd($language_used);
 
 
-        $user = $user_details
-            ->withCount([
+        $user = User::withCount([
                 'submissions as submissions_ac' => function ($query) {
                     $query->where('verdict', 'Accepted');
                 },
@@ -47,7 +48,8 @@ class ProfileView extends Controller
                     $query->where('verdict', 'Compilation Error');
                 },
                 'submissions',
-            ])->first();
+            ])->findOrFail($user_id);
+            //dd($user);
 
         return view('user-profile', ['handle' => $user, 'solved' => $solved]);
     }

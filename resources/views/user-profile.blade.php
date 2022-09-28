@@ -103,7 +103,7 @@ const myChart = new Chart($('#verdicts'), {
         labels: ['AC', 'WA', 'TLE', 'MLE', 'RE', 'CE'],
         datasets: [{
             label: 'Verdicts',
-            data: [{{$handle->submissions_ac}}, {{$handle->submissions_wa}}, 3,3,3,{{$handle->submissions_ce}}],
+            data: [{{$handle->submissions_ac}}, {{$handle->submissions_wa}}, 0,0,0,{{$handle->submissions_ce}}],
             backgroundColor: [
                 'rgb(75,192,192)',
                 '#ef7671',
@@ -134,7 +134,7 @@ const myChart = new Chart($('#verdicts'), {
       max: 100,
 
       // forces step size to be 5 units
-      stepSize: 5 // <----- This prop sets the stepSize
+      stepSize: 10 // <----- This prop sets the stepSize
     }
   }]
 }
