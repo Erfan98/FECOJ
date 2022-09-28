@@ -56,7 +56,7 @@
                         <td data-toggle="tooltip"
                             title="{{ Carbon\Carbon::parse($submission->created_at)->timezone('Asia/Dhaka')->format('M-d-Y || g:i A') }}">
                             {{ $submission->created_at->diffForHumans() }}</td>
-                        <td><a href="#">{{ $submission->user->name }}</a></td>
+                        <td><a href="/u/{{$submission->user->handle}}">{{ $submission->user->handle }}</a></td>
                         <td><a href="/p/{{ $submission->problem }}">{{ $submission->prob->title ?? 'NuLL' }}</a></td>
                         <td>{{ $submission->language->lang }}</td>
                         <td style="color:{{ $submission->verdict == 'Accepted' ? 'green' : 'red' }};">

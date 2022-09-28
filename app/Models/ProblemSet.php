@@ -24,4 +24,7 @@ class ProblemSet extends Model
     public function submissions(){
         return $this->hasMany(Submissions::class);
     }
+    public function user(){
+        return $this->belongsTo(User::class,'author');
+    }
 }
