@@ -48,7 +48,7 @@ class ProfileView extends Controller
                     $query->where('verdict', 'Compilation Error');
                 },
                 'submissions',
-            ])->findOrFail($user_id);
+            ])->findOrFail((int)$user_id);
             //dd($user);
 
         return view('user-profile', ['handle' => $user, 'solved' => $solved]);
