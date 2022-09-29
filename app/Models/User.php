@@ -54,4 +54,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Submissions::class,'who');
     }
+
+    public function lang_name(){
+        return $this->belongsTo(Languages::class,'default_lang');
+    }
 }

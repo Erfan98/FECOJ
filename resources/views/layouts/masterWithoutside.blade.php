@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     @include('partials.__head-tags')
+    @yield('head')
 </head>
 
 <body>
@@ -14,6 +15,9 @@
             </div>
         </div>
     </div>
+
+    <x:notify-messages />
+    @notifyJs
     @yield('script')
 </body>
 

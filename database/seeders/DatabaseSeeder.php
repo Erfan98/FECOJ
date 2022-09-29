@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
             'grad_year'=>'2024',
             'location'=>'Dhaka,Bangladesh',
             'last_seen'=>'',
-            'default-lang'=>71,
+            'default_lang'=>71,
             'password'=> Hash::make('12345678')
         ]);
 

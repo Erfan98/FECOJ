@@ -41,7 +41,7 @@
                             <li><a class="dropdown-item" href="/u/{{Auth::user()->handle}}">Profile</a></li>
                             <li><a class="dropdown-item" href="/submissions">Submissions</a></li>
                             <hr>
-                            <li><a class="dropdown-item" href="/logout">Settings</a></li>
+                            <li><a class="dropdown-item" href="{{Route('settings')}}">Settings</a></li>
                             <li><a class="dropdown-item" href="/logout">Create Problem</a></li>
                             <li><a class="dropdown-item" href="/logout">Help</a></li>
                             <hr>

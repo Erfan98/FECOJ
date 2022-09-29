@@ -7,6 +7,7 @@ use App\Http\Controllers\SubmitController;
 use App\Models\Languages;
 use App\Models\ProblemSet;
 use App\Models\Submissions;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 
@@ -42,6 +43,22 @@ Route::get('/p/{id}', function ($id) {
 Route::get('/submissions', function () {
     $submissions = Submissions::all();
     return view('submissions', ['submissions' => $submissions]);
+});
+
+Route::get('/settings', function () {
+    return view('settings',['langs'=>Languages::all()]);
+})->middleware('auth')->name('settings');
+
+Route::post('/profile_update', function () {
+    $data=array_filter(request()->except('_token'));
+    $user = User::where('handle',Auth::user()->handle)->update($data);
+    if($user){
+        notify()->success('Profile Updated Successfully');
+        return redirect('/settings');
+    }
+    notify()->error('Something went wrong');
+    return redirect()->back();
+
 });
 
 Route::post('/submit', [SubmitController::class, 'submit'])->middleware('auth');

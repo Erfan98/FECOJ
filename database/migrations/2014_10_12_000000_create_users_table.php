@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('grad_year')->nullable();
             $table->string('location')->nullable();
             $table->string('last_seen')->nullable();
-            $table->integer('default-lang')->nullable();
+            $table->integer('default_lang')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
