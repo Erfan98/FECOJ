@@ -48,7 +48,9 @@ class ProfileView extends Controller
                     $query->where('verdict', 'Compilation Error');
                 },
                 'submissions',
-            ])->findOrFail((int)$user_id);
+            ])->findOrFail(intval($user_id));
+            //Converting string user id to interger lets s
+            //see if it confilicts with pgsql or not
             //dd($user);
 
         return view('user-profile', ['handle' => $user, 'solved' => $solved]);
