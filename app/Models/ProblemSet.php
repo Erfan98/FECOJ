@@ -10,6 +10,7 @@ class ProblemSet extends Model
     use HasFactory;
     protected $fillable = [
         'title',
+        'author',
         'statement',
         'sample_input',
         'sample_output',

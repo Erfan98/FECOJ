@@ -70,7 +70,7 @@ Route::get('/create_problem', function () {
 Route::post('/create_problem',[ProblemSetController::class,'store'])->middleware('auth');
 
 Route::get('/get_source/{id}',function($id){
-    return Submissions::with('user:name,id')->find($id);
+    return Submissions::with(['user:name,id','prob:id,title'])->find($id);
 });
 
 Route::get('/problemset',function(){

@@ -22,7 +22,7 @@ return new class extends Migration
             $table->longText('sample_input')->nullable();
             $table->longText('sample_output');
             $table->longText('notes')->nullable();
-            $table->longText('standerd_input');
+            $table->longText('standerd_input')->nullable();
             $table->longText('standerd_output');
             $table->string('cpu_limit');
             $table->string('mem_limit');

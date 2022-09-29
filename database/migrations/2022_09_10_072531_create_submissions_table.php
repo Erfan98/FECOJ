@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('problem');
             $table->string('lang');
             $table->string('verdict');
+            $table->string('stderr')->nullable();
             $table->string('time');
             $table->string('memory');
             $table->timestamps();

@@ -9,7 +9,7 @@
                         <h5 class="modal-title" id="exampleModalLabel">
                             By <a href="" id="handle">Erfan Ahmed Siam</a>,
                             contest: <a href="#">FEC Round 16</a>,
-                            <a href="#" id="problem">problem: (A) Heist</a>,
+                            <a href="#" id="problem">problem: </a>,
                             <i id="verdict"></i>,
                             <a href="#" id="copy">#Copy</a>
                         </h5>
@@ -57,9 +57,10 @@
                             title="{{ Carbon\Carbon::parse($submission->created_at)->timezone('Asia/Dhaka')->format('M-d-Y || g:i A') }}">
                             {{ $submission->created_at->diffForHumans() }}</td>
                         <td><a href="/u/{{$submission->user->handle}}">{{ $submission->user->handle }}</a></td>
-                        <td><a href="/p/{{ $submission->problem }}">{{ $submission->prob->title ?? 'NuLL' }}</a></td>
+                        <td><a href="/p/{{ $submission->problem }}">{{ $submission->prob->title}}</a></td>
                         <td>{{ $submission->language->lang }}</td>
-                        <td style="color:{{ $submission->verdict == 'Accepted' ? 'green' : 'red' }};">
+                        <td data-toggle="tooltip"
+                        title="{{ base64_decode($submission->stderr)}}" style="color:{{ $submission->verdict == 'Accepted' ? 'green' : 'red' }};">
                             {{ $submission->verdict }}</td>
                         <td>{{ (float) $submission->time * 1000 }} ms</td>
                         <td>{{ $submission->memory }} KB</td>
@@ -91,7 +92,9 @@
                 type: "GET",
                 url: "get_source/" + sc,
                 success: function(response) {
+                    console.log(response);
                     $('#handle').text(response.user.name);
+                    $('#problem').text("Problem :"+response.prob.title).attr('href','/p/'+response.prob.id);
                     $('#verdict').text(response.verdict).css("color", response.verdict == "Accepted" ?
                         "green" : "red");
                     $("code").text(atob(response.source_code));

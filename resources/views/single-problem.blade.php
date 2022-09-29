@@ -4,6 +4,8 @@
 {{-- @dd($problem) --}}
     <div class="card-body">
         <div class="h2">{!!$problem->title!!}</div>
+        <div>Author: Erfan Ahmed Siam</div>
+        <div>CPU Limit: {{$problem->cpu_limit}} second Memory Limit: {{$problem->mem_limit}}</div>
         {!!$problem->statement!!}
         <div class="h2">Input</div>
 
@@ -13,6 +15,11 @@
         <div class="h2">Output</div>
         <div class="output-block">
             {!!$problem->sample_output!!}
+        </div>
+
+        <div class="h2">Notes</div>
+        <div class="output-block">
+            {!!$problem->notes!!}
         </div>
   </div>
 @endsection

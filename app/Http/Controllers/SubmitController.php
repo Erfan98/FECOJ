@@ -43,6 +43,7 @@ class SubmitController extends Controller
         $submission->verdict = $status['status']['description'];
         $submission->time =$status['time']?? "0.0";
         $submission->memory =$status['memory']?? "0";
+        $submission->stderr =$status['stderr']?? "0";
 
         $submission->save();
 

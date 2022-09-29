@@ -1,6 +1,6 @@
 <div class="mb-3">
   <label for="" class="form-label">Standard Input</label>
-  <textarea class="form-control" name="standerd_input" id="" rows="6" required></textarea>
+  <textarea class="form-control" name="standerd_input" id="" rows="6" ></textarea>
 </div>
 
 <div class="mb-3">

@@ -1,4 +1,4 @@
-
+    <input type="text" value="{{Auth::user()->id}}" hidden name="author">
     <div class="mb-3">
       <label for="" class="form-label">Problem Ttile(Required)</label>
       <input required type="text" class="form-control" name="title" id="" aria-describedby="helpId" placeholder="">

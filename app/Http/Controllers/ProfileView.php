@@ -36,7 +36,8 @@ class ProfileView extends Controller
 
         //     dd($language_used);
 
-
+        //$problem_created = User::withCount('problems')->where('handle',$handle)->firstOrFail();
+        //dd($problem_created);
         $user = User::withCount([
                 'submissions as submissions_ac' => function ($query) {
                     $query->where('verdict', 'Accepted');
@@ -48,7 +49,8 @@ class ProfileView extends Controller
                     $query->where('verdict', 'Compilation Error');
                 },
                 'submissions',
-            ])->where('handle',$handle)->firstOrFail();
+                'problems'
+            ])->findOrFail($user_id);
             //Converting string user id to interger lets s
             //see if it confilicts with pgsql or not
             //dd($user);

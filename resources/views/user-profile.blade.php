@@ -16,7 +16,7 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">Problem created</h4>
-                <p class="card-text"><h1>23</h1></p>
+                <p class="card-text"><h1>{{$handle->problems_count}}</h1></p>
             </div>
         </div>
     </div>

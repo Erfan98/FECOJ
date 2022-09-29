@@ -60,4 +60,7 @@ class User extends Authenticatable
     public function lang_name(){
         return $this->belongsTo(Languages::class,'default_lang');
     }
+    public function problems(){
+        return $this->hasMany(ProblemSet::class,'author');
+    }
 }
