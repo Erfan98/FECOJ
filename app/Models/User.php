@@ -11,7 +11,8 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
-   // public $keyType = 'string';
+    public $keyType = 'string';
+    //pgsql is dumb if it works now!
 
     /**
      * The attributes that are mass assignable.
