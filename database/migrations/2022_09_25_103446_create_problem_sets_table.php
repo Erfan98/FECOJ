@@ -15,12 +15,13 @@ return new class extends Migration
     {
         Schema::create('problem_sets', function (Blueprint $table) {
             $table->id();
+            $table->integer('author');
             //$table->string('category');
             $table->string('title');
             $table->longText('statement');
-            $table->longText('sample_input');
+            $table->longText('sample_input')->nullable();
             $table->longText('sample_output');
-            $table->longText('notes');
+            $table->longText('notes')->nullable();
             $table->longText('standerd_input');
             $table->longText('standerd_output');
             $table->string('cpu_limit');
