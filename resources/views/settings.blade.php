@@ -46,7 +46,7 @@
         <div class="col-md-4">
             <label for="language">Choose Default Language:</label>
             <select class="form-select" id="language" name="default_lang">
-                <option selected value="{{Auth::user()->default_lang}}">{{Auth::user()->lang_name->lang}}</option>
+                <option selected value="{{Auth::user()->default_lang}}">{{Auth::user()->lang_name->lang?? 'No Languag Selected'}}</option>
                 @foreach ($langs as $lang)
             <option value={{$lang->id}}>{{$lang->lang}}</option>
             @endforeach
