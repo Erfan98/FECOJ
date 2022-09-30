@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Submissions;
 use Illuminate\Support\Facades\DB;
+use App\Models\Languages;
 
 use Illuminate\Http\Request;
+use Psy\Command\WhereamiCommand;
 
 class ProfileView extends Controller
 {
@@ -14,9 +16,6 @@ class ProfileView extends Controller
     {
         $user_details = User::where('handle', $handle)->firstOrFail();
         $user_id = $user_details->id;
-
-        //dd($user_details);
-
         $solved = DB::table('submissions')
             ->select('problem')
             ->distinct()
@@ -25,16 +24,50 @@ class ProfileView extends Controller
             ->get()
             ->count();
 
-        //    $language_used = DB::table('submissions')
-        //                         //->select('lang')
-        //                         ->leftJoin('languages','lang','id')
-        //                         ->where('who',$user_id)
-        //                         ->distinct()
-        //                         ->get();
+           $language_used = DB::table('submissions')
+                                ->select('lang')
+                                ->distinct('lang')
+                                ->where('who',$user_id)
+                                //->groupBy('lang')
+                                ->get();
+            $lang_used =array();
+            // foreach($language_used as $language){
+            //     array_push(
+            //         $lang_used,
+            //         array(Languages::find($language->lang)->lang=>Submissions::where('lang',$language->lang)->count()));
+            // }
+
+            foreach($language_used as $language){
+                array_push(
+                    $lang_used,
+                    Languages::find($language->lang)->lang);
+            }
+            //dd($lang_used);
+            $lang_used_count = array();
+            foreach($language_used as $language){
+                array_push(
+                    $lang_used_count,
+                    Submissions::where('who',$user_id)->where('lang',$language->lang)->count()
+                );
+            }
+           // dd($lang_used,$lang_used_count);
+
+
+            //$bla  = Submissions::where('lang',$language_used[1]->lang)->count();
+            // $result = Submissions::select('lang')
+            //             ->groupBy('lang')
+            //             ->get();
+            //             dd($result);
+
+                        // $user_lang = [];
+
+                        // $result->map($result, function($item){
+                        // $user_lang[$item->id] = $item->times;
+                        // });
 
 
 
-        //     dd($language_used);
+
 
         //$problem_created = User::withCount('problems')->where('handle',$handle)->firstOrFail();
         //dd($problem_created);
@@ -55,6 +88,6 @@ class ProfileView extends Controller
             //see if it confilicts with pgsql or not
             //dd($user);
 
-        return view('user-profile', ['handle' => $user, 'solved' => $solved]);
+        return view('user-profile', ['handle' => $user, 'solved' => $solved,'languages'=>$lang_used,'languages_count'=>$lang_used_count]);
     }
 }
