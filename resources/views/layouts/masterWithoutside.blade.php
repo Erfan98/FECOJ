@@ -9,7 +9,7 @@
     @include('partials.__nav-menu')
 
     <div class="container">
-        <div class="card">
+        <div class="card card-full">
             <div class="card-body">
                 @yield('body')
             </div>
