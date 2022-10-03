@@ -7,7 +7,9 @@
             <tr>
                 <th>Id</th>
                 <th>Title</th>
-                <th>Status</th>
+                @auth
+                    <th>Status</th>
+                @endauth
                 <th>Accuracy</th>
                 <th>Author</th>
                 <th>Difficulty</th>
@@ -21,7 +23,10 @@
             <tr class="">
                 <td scope="row">{{$problem->id}}</td>
                 <td><a href="/p/{{$problem->id}}">{{$problem->title}}</a></td>
-                <td>{{userProblemStatus(Auth::user(),$problem->id)}}</td>
+                @auth
+                    <td>{{userProblemStatus(Auth::user(),$problem->id)}}</td>
+                @endauth
+
                 <td data-toggle="tooltip" title="
                {{"Accepted:".\App\Models\Submissions::where('verdict','Accepted')->where('problem',$problem->id)->count()}}
                {{"Submissions:".\App\Models\Submissions::where('problem',$problem->id)->count()}}
