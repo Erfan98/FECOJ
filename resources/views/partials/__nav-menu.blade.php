@@ -14,6 +14,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/problemset">Problemset</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">LeaderBoard</a>
+                </li>
 
             </ul>
             {{-- <form class="d-flex">
@@ -42,8 +45,8 @@
                             <li><a class="dropdown-item" href="/submissions">Submissions</a></li>
                             <hr>
                             <li><a class="dropdown-item" href="{{Route('settings')}}">Settings</a></li>
-                            <li><a class="dropdown-item" href="/logout">Create Problem</a></li>
-                            <li><a class="dropdown-item" href="/logout">Help</a></li>
+                            <li><a class="dropdown-item" href={{ route('create-problem') }}>Create Problem</a></li>
+                            <li><a class="dropdown-item" href="/#">Help</a></li>
                             <hr>
                             <li><a class="dropdown-item" href="/logout">Logout</a></li>
                         </ul>

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Http;
+use App\Models\Submissions;
 
 function IsolateSubmit($standard_input,$expected_output,$language_id, $source_code,$cpu_time_limit=5.0,$memory_limit=128000)
 {
@@ -47,3 +48,18 @@ function getStatus($token)
 //     ])->get(env('X_RapidAPI_Host') . '/languages');
 //     return $response->json();
 // }
+
+function userProblemStatus($user,$problem_id){
+    $count = $user->submissions->where('verdict','Accepted')->where('problem',$problem_id)->count();
+    if($count){
+        return "Solved";
+    }
+    return "--";
+}
+
+function probelmAccuracy($problem_id){
+     $total_accepted = Submissions::where('verdict','Accepted')->where('problem',$problem_id)->count();
+     $total_submission = Submissions::where('problem',$problem_id)->count();
+     $accuracy = round($total_accepted/$total_submission*100);
+     return $accuracy;
+}

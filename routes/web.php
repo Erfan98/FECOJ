@@ -67,7 +67,7 @@ Route::get('/create_problem', function () {
     return view('create-problem');
 })->middleware('auth');
 
-Route::post('/create_problem',[ProblemSetController::class,'store'])->middleware('auth');
+Route::post('/create_problem',[ProblemSetController::class,'store'])->middleware('auth')->name('create-problem');
 
 Route::get('/get_source/{id}',function($id){
     return Submissions::with(['user:name,id','prob:id,title'])->find($id);
