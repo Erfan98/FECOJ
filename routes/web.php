@@ -76,3 +76,7 @@ Route::get('/get_source/{id}',function($id){
 Route::get('/problemset',function(){
     return view('problem-set',['problems'=>ProblemSet::all()]);
 });
+
+Route::get('leaderboard',function(){
+    return view('leaderboard',['users'=> User::all()]);
+});

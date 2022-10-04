@@ -63,3 +63,12 @@ function probelmAccuracy($problem_id){
      $accuracy = round($total_accepted/$total_submission*100);
      return $accuracy;
 }
+
+function userSolved($user_id){
+    return Submissions::select('problem')
+    ->distinct()
+    ->where('who', $user_id)
+    ->where('verdict', 'Accepted')
+    ->get()
+    ->count();
+}
