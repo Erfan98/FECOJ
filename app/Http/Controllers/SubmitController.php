@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\ProblemSet;
 use App\Models\Submissions;
+use Symfony\Component\HttpFoundation\Request;
+use Illuminate\Validation\Rules\File;
 
 class SubmitController extends Controller
 {
-    public function submit(){
+    public function submit(Request $request){
         /*
             id
             when
@@ -20,6 +22,10 @@ class SubmitController extends Controller
 
         */
         // dd(request());
+        // $validate = $request->validate([
+        //     'source_code'=> 'unique:submissions'
+        // ]);
+        //dd($validate);
         $submission = new Submissions();
         $submission->who = request()->user_id;
         $submission->problem = request()->problem_id;
