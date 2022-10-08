@@ -23,12 +23,12 @@
 
 
         {!!$problem->statement!!}
-        <div class="h2">Input</div>
+        <div class="h2">Sample Input</div>
 
         <div class="input-block">
             {!!$problem->sample_input!!}
         </div>
-        <div class="h2">Output</div>
+        <div class="h2">Sample Output</div>
         <div class="output-block">
             {!!$problem->sample_output!!}
         </div>

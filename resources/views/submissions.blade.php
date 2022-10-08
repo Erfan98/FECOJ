@@ -36,7 +36,7 @@
 
 
 
-        <table class="table table-striped" id="myTable">
+        <table class="table table-striped table-hover align-middle" id="myTable">
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">#</th>

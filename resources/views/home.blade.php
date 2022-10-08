@@ -21,19 +21,19 @@
     <table class="table table-striped
     table-hover
     table-borderless
-    table-primary
+    {{-- table-primary --}}
     align-middle">
         <thead class="table-light">
             <tr>
                 <th>Handle</th>
-                <th>Solved</th>
+                {{-- <th>Solved</th> --}}
             </tr>
             </thead>
             <tbody class="table-group-divider">
                 @foreach (\App\Models\User::all() as $user)
-                <tr class="table-primary" >
+                <tr>
                     <td>{{$user->handle}}</td>
-                    <td scope="row">6</td>
+                    {{-- <td scope="row">6</td> --}}
 
                 </tr>
                 @endforeach
