@@ -8,15 +8,16 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/contests">Contests</a>
+                    {{-- <a class="nav-link active" aria-current="page" href="#">Contests</a> --}}
+                <li><a class="nav-link" href="{{route('home')}}">Home</a></li>
+                </li>
+                {{-- <i class="bi bi-book-fill"></i> --}}
+                <li class="nav-item"><a class="nav-link" href="/problemset">Problemset</a></li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('leaderboard')}}">LeaderBoard</a>
+                </li>
+                <li><a class="nav-link" href="/submissions">Submissions</a></li>
                 <li><a class="nav-link" href="/create_problem">Create Problem</a></li>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/problemset">Problemset</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">LeaderBoard</a>
-                </li>
 
             </ul>
             {{-- <form class="d-flex">
@@ -46,7 +47,7 @@
                             <hr>
                             <li><a class="dropdown-item" href="{{Route('settings')}}">Settings</a></li>
                             <li><a class="dropdown-item" href={{ route('create-problem') }}>Create Problem</a></li>
-                            <li><a class="dropdown-item" href="/#">Help</a></li>
+                            {{-- <li><a class="dropdown-item" href="/#">Help</a></li> --}}
                             <hr>
                             <li><a class="dropdown-item" href="/logout">Logout</a></li>
                         </ul>

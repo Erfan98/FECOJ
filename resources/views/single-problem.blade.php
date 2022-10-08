@@ -3,9 +3,25 @@
 @section('body')
 {{-- @dd($problem) --}}
     <div class="card-body">
-        <div class="h2">{!!$problem->title!!}</div>
-        <div>Author: Erfan Ahmed Siam</div>
-        <div>CPU Limit: {{$problem->cpu_limit}} second Memory Limit: {{$problem->mem_limit}}</div>
+        <div class="d-flex justify-between">
+            <h2>
+                {!!$problem->title!!}
+
+            </h2>
+
+            <div>
+                <div>Author: <a href="/u/{{$problem->user->handle}}">{{$problem->user->name}}</a></div>
+                <div>
+                    Time Limit: {{$problem->cpu_limit/1000}}s
+                </div>
+                <div>
+                     Memory Limit: {{$problem->mem_limit}}MB
+                </div>
+
+            </div>
+        </div>
+
+
         {!!$problem->statement!!}
         <div class="h2">Input</div>
 
@@ -27,17 +43,20 @@
 @section('sidebar')
 
         <h3>Submit a solution</h3>
+        <p>
+            Choose a programming language, select your solution file, and click on Submit.
+        </p>
 
         <form action="/submit" method="post" enctype="multipart/form-data">
             @csrf
-            <label for="user_id">User:</label>
+            {{-- <label for="user_id">User:</label> --}}
             <input name="user_id" class="form-control" type="text" value="{{Auth::user()->id??0}}" aria-label="Disabled input example" hidden>
-            <input class="form-control" type="text" placeholder="{{Auth::user()->name??"Annonymus"}}" aria-label="Disabled input example" disabled>
+            {{-- <input class="form-control" type="text" placeholder="{{Auth::user()->name??"Annonymus"}}" aria-label="Disabled input example" disabled> --}}
 
 
-            <label for="problem_id">User:</label>
+            {{-- <label for="problem_id">User:</label> --}}
             <input name="problem_id" class="form-control" type="text" value="{{$problem->id}}" aria-label="Disabled input example" hidden>
-            <input class="form-control" type="text" placeholder="Problem ID: {{$problem->id}}" aria-label="Disabled input example" disabled>
+            {{-- <input class="form-control" type="text" placeholder="Problem ID: {{$problem->id}}" aria-label="Disabled input example" disabled> --}}
 
             <label for="language">Choose a Language:</label>
             <select class="form-select" id="language" name="language">
@@ -60,4 +79,12 @@
             @endguest
 
         </form>
+@endsection
+
+@section('sidebar-ext')
+        <h4>Submissions</h4>
+        <div class="d-flex justify-between">
+        Latest
+        <div> Accepted</div>
+    </div>
 @endsection

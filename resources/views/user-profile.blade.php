@@ -58,7 +58,7 @@
     <img src="" class="img-fluid" alt="image desc">
 </picture> --}}
 
-<img src="https://placehold.jp/300x300.png" class="img-fluid rounded-top" alt="">
+<img src="{{asset('img/dp.png')}}" class="img-fluid rounded" alt="">
 <br>
 <h3 class="text-center">{{$handle->name}}</h3>
 <h5 class="text-center">({{$handle->handle}})</h5>

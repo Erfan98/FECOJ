@@ -54,14 +54,14 @@ function userProblemStatus($user,$problem_id){
     if($count){
         return "Solved";
     }
-    return "--";
+    return "Unsolved";
 }
 
 function probelmAccuracy($problem_id){
      $total_accepted = Submissions::where('verdict','Accepted')->where('problem',$problem_id)->count();
      $total_submission = Submissions::where('problem',$problem_id)->count();
-     $accuracy = round($total_accepted/$total_submission*100);
-     return $accuracy;
+     //$accuracy = round($total_accepted/$total_submission*100);
+     return $total_submission ==0 ? 0:round($total_accepted/$total_submission*100);
 }
 
 function userSolved($user_id){

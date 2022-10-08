@@ -26,7 +26,7 @@ Route::get('/', function () {
     //notify()->error('Something Went Wrong');
     //dd($items);
     return view('home');
-});
+})->name('home');
 
 Route::get('/u/{handle}',[ProfileView::class,'show']);
 
@@ -79,4 +79,4 @@ Route::get('/problemset',function(){
 
 Route::get('leaderboard',function(){
     return view('leaderboard',['users'=> User::all()]);
-});
+})->name('leaderboard');
