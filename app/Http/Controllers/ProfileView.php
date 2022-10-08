@@ -81,6 +81,16 @@ class ProfileView extends Controller
                 'submissions as submissions_ce' => function ($query) {
                     $query->where('verdict', 'Compilation Error');
                 },
+                'submissions as submissions_re' => function ($query) {
+                    $query->where('verdict', 'Runtime Error (NZEC)');
+                },
+                'submissions as submissions_tle' => function ($query) {
+                    $query->where('verdict', 'Time Limit Exceeded');
+                },
+                'submissions as submissions_mle' => function ($query) {
+                    $query->where('verdict', 'Runtime Error (SIGSEGV)');
+                },
+
                 'submissions',
                 'problems'
             ])->findOrFail($user_id);

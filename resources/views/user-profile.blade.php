@@ -103,15 +103,14 @@ const myChart = new Chart($('#verdicts'), {
         labels: ['AC', 'WA', 'TLE', 'MLE', 'RE', 'CE'],
         datasets: [{
             label: 'Verdicts',
-            data: [{{$handle->submissions_ac}}, {{$handle->submissions_wa}}, 0,0,0,{{$handle->submissions_ce}}],
+            data: [{{$handle->submissions_ac}}, {{$handle->submissions_wa}},{{$handle->submissions_tle}},{{$handle->submissions_mle}},{{$handle->submissions_re}},{{$handle->submissions_ce}}],
             backgroundColor: [
-                'rgb(75,192,192)',
-                '#ef7671',
-                '#1b96c6',
-                'rgb(255, 206, 86)',
-                'rgb(75, 192, 192)',
-                'rgb(153, 102, 255)',
-                'rgb(255, 159, 64)'
+                '#53BF9D',
+                '#F94C66',
+                '#BD4291',
+                '#3AB0FF',
+                '#FFC54D',
+                '#9EB23B'
             ]
         }]
     },
@@ -151,13 +150,12 @@ const newChart = new Chart($('#languages'), {
             label: 'Languages',
             data: @json($languages_count),
             backgroundColor: [
-                'rgba(75, 192, 192)',
-                'rgba(255, 99, 132)',
-                'rgba(54, 162, 235)',
-                'rgba(255, 206, 86)',
-                'rgba(75, 192, 192)',
-                'rgba(153, 102, 255)',
-                'rgba(255, 159, 64)'
+                '#53BF9D',
+                '#F94C66',
+                '#BD4291',
+                '#3AB0FF',
+                '#FFC54D',
+                '#9EB23B'
             ],
             // borderColor: [
             //     'rgba(255, 99, 132, 1)',
