@@ -1,6 +1,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+<meta property="og:url"                content="{{config('app.url')}}" />
+{{-- <meta property="og:type"               content="article" /> --}}
+<meta property="og:title"              content="WELCOME TO FECOJ" />
+{{-- <meta property="og:description"        content="How much does culture influence creative thinking?" /> --}}
+<meta property="og:image"              content={{asset('img/fb.png')}} />
+
+
+
+
+
+
+
+
 <title>FEC Online Judge</title>
 @notifyCss
 {{-- Ubuntu Font --}}
