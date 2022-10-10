@@ -17,6 +17,7 @@
 
 
 <title>FEC Online Judge</title>
+<link rel="icon" type="image/x-icon" href={{asset('img/favicon.png')}}>
 @notifyCss
 {{-- Ubuntu Font --}}
 <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Ubuntu" />
