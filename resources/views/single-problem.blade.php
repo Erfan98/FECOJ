@@ -59,8 +59,12 @@
             {{-- <input class="form-control" type="text" placeholder="Problem ID: {{$problem->id}}" aria-label="Disabled input example" disabled> --}}
 
             <label for="language">Choose a Language:</label>
-            <select class="form-select" id="language" name="language">
-            <option value="{{Auth::user()->default_lang??'0'}}">{{Auth::user()->lang_name->lang??'No Language Selected'}}</option>
+            <select required class="form-select" id="language" name="language">
+                @if (Auth::user()->default_lang)
+                    <option value="{{Auth::user()->default_lang}}">{{Auth::user()->lang_name->lang}}</option>
+                @else
+                    <option value="54" selected>C++(GCC 9.2.0)</option>
+                @endif
             @foreach ($langs as $lang)
             <option value={{$lang->id}}>{{$lang->lang}}</option>
             @endforeach

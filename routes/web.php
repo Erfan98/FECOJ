@@ -28,7 +28,7 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
-Route::get('/u/{handle}',[ProfileView::class,'show']);
+Route::get('/u/{handle}',[ProfileView::class,'show'])->name('user');
 
 Route::get('/p/{id}', function ($id) {
     $problem = ProblemSet::findOrFail($id);
