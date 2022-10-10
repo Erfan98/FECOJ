@@ -60,7 +60,7 @@
 
             <label for="language">Choose a Language:</label>
             <select required class="form-select" id="language" name="language">
-                @if (Auth::user()->default_lang)
+                @if (isset(Auth::user()->default_lang))
                     <option value="{{Auth::user()->default_lang}}">{{Auth::user()->lang_name->lang}}</option>
                 @else
                     <option value="54" selected>C++(GCC 9.2.0)</option>
