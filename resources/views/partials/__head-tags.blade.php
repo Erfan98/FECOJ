@@ -5,8 +5,8 @@
 
 <meta property="og:url"                content="{{config('app.url')}}" />
 {{-- <meta property="og:type"               content="article" /> --}}
-<meta property="og:title"              content="WELCOME TO FECOJ" />
-{{-- <meta property="og:description"        content="How much does culture influence creative thinking?" /> --}}
+<meta property="og:title"              content="FEC Online Judge" />
+<meta property="og:description"        content="The Place for Competitive Programmers" />
 <meta property="og:image"              content={{asset('img/fb.png')}} />
 
 
