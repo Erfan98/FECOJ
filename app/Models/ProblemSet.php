@@ -23,7 +23,7 @@ class ProblemSet extends Model
     ];
 
     public function submissions(){
-        return $this->hasMany(Submissions::class);
+        return $this->hasMany(Submissions::class,'problem');
     }
     public function user(){
         return $this->belongsTo(User::class,'author');

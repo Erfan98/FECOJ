@@ -43,9 +43,8 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">Language Used</h4>
-                <canvas id="languages" width="100" height="100"></canvas
+                <canvas id="languages" width="100" height="100"></canvas>
             </div>
-        </div>
         </div>
     </div>
 </div>

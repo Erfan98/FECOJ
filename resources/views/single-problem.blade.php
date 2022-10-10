@@ -86,9 +86,59 @@
 @endsection
 
 @section('sidebar-ext')
-        <h4>Submissions</h4>
+        {{-- <h4>Submissions</h4>
         <div class="d-flex justify-between">
         Latest
         <div> Accepted</div>
-    </div>
+    </div> --}}
+    <h4 class="card-title">Statistics</h4>
+    <canvas id="verdicts"></canvas>
+@endsection
+
+@section('script')
+    <script>
+        const myChart = new Chart($('#verdicts'), {
+    type: 'bar',
+    data: {
+        labels: ['AC', 'WA', 'TLE', 'MLE', 'RE', 'CE'],
+        datasets: [{
+            label: 'Verdicts',
+            data: [{{$problem->ac .','.$problem->wa.','.$problem->tle.','.$problem->mle.','.$problem->re.','.$problem->ce}}],
+            backgroundColor: [
+                '#53BF9D',
+                '#F94C66',
+                '#BD4291',
+                '#3AB0FF',
+                '#FFC54D',
+                '#9EB23B'
+            ]
+        }]
+    },
+    scales: {
+  xAxes: [{
+    display: true,
+    scaleLabel: {
+      display: true,
+      labelString: 'Month'
+    }
+  }],
+  yAxes: [{
+    display: true,
+    scaleLabel: {
+      display: true,
+      labelString: 'Value'
+    },
+    ticks: {
+      min: 0,
+      max: 100,
+
+      // forces step size to be 5 units
+      stepSize: 10 // <----- This prop sets the stepSize
+    }
+  }]
+}
+
+});
+
+    </script>
 @endsection

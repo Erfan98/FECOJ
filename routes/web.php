@@ -1,5 +1,8 @@
 <?php
+
 namespace App\Models;
+
+use App\Http\Controllers\ProblemController;
 use App\Http\Controllers\ProblemSetController;
 use App\Http\Controllers\ProfileView;
 use Illuminate\Support\Facades\Route;
@@ -27,17 +30,9 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
-Route::get('/u/{handle}',[ProfileView::class,'show'])->name('user');
+Route::get('/u/{handle}', [ProfileView::class, 'show'])->name('user');
 
-Route::get('/p/{id}', function ($id) {
-    $problem = ProblemSet::findOrFail($id);
-
-    if($problem){
-        return view('single-problem',['langs'=>Languages::all(),'problem'=>$problem]);
-    }
-    abort(404);
-
-});
+Route::get('/p/{id}', [ProblemController::class, 'show']);
 
 Route::get('/submissions', function () {
     $submissions = Submissions::all();
@@ -45,37 +40,38 @@ Route::get('/submissions', function () {
 });
 
 Route::get('/settings', function () {
-    return view('settings',['langs'=>Languages::all()]);
+    return view('settings', ['langs' => Languages::all()]);
 })->middleware('auth')->name('settings');
 
 Route::post('/profile_update', function () {
-    $data=array_filter(request()->except('_token'));
-    $user = User::where('handle',Auth::user()->handle)->update($data);
-    if($user){
+    $data = array_filter(request()->except('_token'));
+    $user = User::where('handle', Auth::user()->handle)->update($data);
+    if ($user) {
         notify()->success('Profile Updated Successfully');
         return redirect('/settings');
     }
     notify()->error('Something went wrong');
     return redirect()->back();
-
 })->middleware('auth');
 
 Route::post('/submit', [SubmitController::class, 'submit'])->middleware('auth');
 
 Route::get('/create_problem', function () {
-    return view('create-problem');
-})->middleware('auth');
+            return view('create-problem');
+        })->middleware('auth');
 
-Route::post('/create_problem',[ProblemSetController::class,'store'])->middleware('auth')->name('create-problem');
+Route::post('/create_problem', [ProblemSetController::class, 'store'])
+        ->middleware('auth')
+        ->name('create-problem');
 
-Route::get('/get_source/{id}',function($id){
-    return Submissions::with(['user:name,id','prob:id,title'])->find($id);
+Route::get('/get_source/{id}', function ($id) {
+    return Submissions::with(['user:name,id', 'prob:id,title'])->find($id);
 });
 
-Route::get('/problemset',function(){
-    return view('problem-set',['problems'=>ProblemSet::all()]);
+Route::get('/problemset', function () {
+    return view('problem-set', ['problems' => ProblemSet::all()]);
 });
 
-Route::get('leaderboard',function(){
-    return view('leaderboard',['users'=> User::all()]);
+Route::get('leaderboard', function () {
+    return view('leaderboard', ['users' => User::all()]);
 })->name('leaderboard');
