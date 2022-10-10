@@ -8,7 +8,6 @@ use App\Models\Languages;
 use App\Models\ProblemSet;
 use App\Models\Submissions;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
 
 /*
@@ -59,7 +58,7 @@ Route::post('/profile_update', function () {
     notify()->error('Something went wrong');
     return redirect()->back();
 
-});
+})->middleware('auth');
 
 Route::post('/submit', [SubmitController::class, 'submit'])->middleware('auth');
 
