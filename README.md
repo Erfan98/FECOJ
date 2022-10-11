@@ -1,3 +1,5 @@
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="public/img/logo.png" width="400" alt="Laravel Logo"></a></p>
+
 ## About FECOJ
 
 FECOJ is an online judge platform for students of Faridpur Engineering College. Problem-solving is a must-have skill for students of CSE and what can be better than solving problems in their own online judge? 
