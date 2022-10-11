@@ -2,7 +2,8 @@
 
 FECOJ is an online judge platform for students of Faridpur Engineering College. Problem-solving is a must-have skill for students of CSE and what can be better than solving problems in their own online judge? 
 
-
+## Time tracking
+[![wakatime](https://wakatime.com/badge/github/Erfan98/FECOJ.svg)](https://wakatime.com/badge/github/Erfan98/FECOJ)
 
 ## Built With
 
@@ -13,7 +14,7 @@ FECOJ is an online judge platform for students of Faridpur Engineering College. 
 * **Front-End**
   * JQuery
   * Bootstrap 5
-  
+
 
 * **Back-End**
   * Laravel
