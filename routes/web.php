@@ -30,6 +30,12 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
+/*------------------------------
+Judge Call back function will be written here
+Route::put('judge0',function(){
+    return request();
+});
+*/
 Route::get('/u/{handle}', [ProfileView::class, 'show'])->name('user');
 
 Route::get('/p/{id}', [ProblemController::class, 'show']);
