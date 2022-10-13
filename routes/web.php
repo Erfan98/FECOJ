@@ -81,3 +81,20 @@ Route::get('/problemset', function () {
 Route::get('leaderboard', function () {
     return view('leaderboard', ['users' => User::all()]);
 })->name('leaderboard');
+
+
+Route::group(['prefix' => 'contest'], function() {
+    Route::get('/create', function(){
+        return view('create_contest');
+    });
+    Route::post('/create', function(){
+        dd(request()->all());
+        //return view('create_contest');
+    });
+    // Route::get('create', 'UserController@create')->name('user.create');
+    // Route::post('store', 'UserController@store')->name('user.store');
+    // Route::get('edit/{id}', 'UserController@edit')->name('user.edit');
+    // Route::put('update/{id}', 'UserController@update')->name('user.update');
+    // Route::delete('delete/{id}', 'UserController@destroy')->name('user.delete');
+});
+
