@@ -1,12 +1,10 @@
 @extends('layouts.masterWithoutside')
 
 @section('body')
-
-bs5-nav
 <form action="/contest/create" method="post">
     @csrf
     <div class="mb-3">
-        <label for="" class="form-label">City</label>
+        <label for="" class="form-label">Openness</label>
         <select class="form-select form-select-lg" name="" id="">
             <option selected>Select one</option>
             <option value="">Public</option>
@@ -43,12 +41,12 @@ bs5-nav
     </div>
 
     <div class="mb-3">
-      <label for="" class="form-label">City</label>
-      <select name="problems" multiple class="form-select form-select-lg" name="" id="">
+      <label for="" class="form-label">Choose Problems</label>
+      <select name="problems[]" multiple class="form-select form-select-lg" id="">
             <option selected>Select one</option>
-            <option value="1">New Delhi</option>
-            <option value="2">Istanbul</option>
-            <option value="3">Jakarta</option>
+            @foreach ($problems as $problem)
+                <option value="{{$problem->id}}">{{$problem->title}}</option>
+            @endforeach
         </select>
     </div>
 

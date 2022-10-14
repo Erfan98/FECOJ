@@ -17,9 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('token');
             $table->longText('source_code');
-            $table->string('who');
-            $table->string('problem');
-            $table->string('lang');
+            $table->foreignId('who');
+            $table->foreignId('problem');
+            $table->foreignId('lang');
             $table->string('verdict');
             $table->longText('stderr')->nullable();
             $table->string('time');

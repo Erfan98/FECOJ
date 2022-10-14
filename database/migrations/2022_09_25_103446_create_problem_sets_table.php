@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('problem_sets', function (Blueprint $table) {
             $table->id();
-            $table->integer('author');
+            $table->foreignId('author');
+            $table->foreignId('contest_id')->nullable();
             //$table->string('category');
             $table->string('title');
             $table->longText('statement');

@@ -85,7 +85,7 @@ Route::get('leaderboard', function () {
 
 Route::group(['prefix' => 'contest'], function() {
     Route::get('/create', function(){
-        return view('create_contest');
+        return view('create_contest',['problems' => ProblemSet::all()]);
     });
     Route::post('/create', function(){
         dd(request()->all());
